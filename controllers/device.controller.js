@@ -3,11 +3,11 @@ const chk = require('../config/form.validator');
 const tokenGen=require('../config/sec.token');
 exports.register = (req, res, next) => {
     data = {
-        activate: chk.check(req.body.vending_regdate),
+        vendingRegdate: chk.check(req.body.vendingRegdate),
         status: chk.check(req.body.status),
-        cellNum:chk.check(req.body.cellNum)
-        ,refill: chk.check(req.body.refill),
-        aceess: chk.check(req.body.access),
+        cellNum:chk.check(req.body.cellNum),
+        refill: chk.check(req.body.refill),
+        access: chk.check(req.body.access),
         location: chk.check(req.body.location),
         address: chk.check(req.body.address),
         fVendId: 0,
@@ -18,7 +18,7 @@ exports.register = (req, res, next) => {
     };
     deviceService.deviceRegister(data, (err, result) => {
         if (err)
-            return res.status(500).send({ success: 0, data: "Registeration failed" });
+            return res.status(500).send({ success: 0, data: err });
         data.fVendId=result.insertId;
         deviceService.deviceInfo(data,(err,result)=>{
             if(err)
@@ -36,17 +36,3 @@ exports.register = (req, res, next) => {
 
 
 }
-exports.DbCreate=(req,res,next)=>{
-    deviceService.dbInit((err,result)=>{
-        if(!err){
-            return res.status(200).send({success:1,data:result});
-           
-        }
-        else
-        return res.status(500).send({success:0,data:err});
-
-       
-    });
-    
-    
-        }
