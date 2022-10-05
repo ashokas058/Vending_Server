@@ -24,3 +24,20 @@ exports.deviceStock=(data,callback)=>{
     })
 }
 
+
+exports.getStorageDetails=(data,callback)=>{
+db.query('select * from deviceStorage where fVendId=?'
+,[data.fVendId],(err,result,fields)=>{
+    callback(err,result);
+})
+}
+
+exports.updateStorage=(data,callback)=>{
+   
+    db.query('update deviceStorage set stock=? where fVendId=?',[data.stock,data.fVendId],
+    (err,result,fields)=>{
+
+        callback(err,result);
+    });
+}
+
