@@ -11,7 +11,7 @@ exports.register = (req, res, next) => {
     };
     userService.register(data, (error, result) => {
         if(error) {
-            res.status(400).send({ success: 0, data: 'register failed' });
+            res.status(400).send({ success: 0, data: error });
             next();
 
         }
