@@ -42,5 +42,6 @@ exports.getUserDetails=(data,callback)=>{
     else
     callback(null,result);
   })
+ 
 }
 
