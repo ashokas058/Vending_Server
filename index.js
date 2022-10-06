@@ -6,7 +6,7 @@ const deviceRoute=require('./routes/device.route');
 const infoRoute=require('./routes/info.route');
 const paymentRoute=require('./routes/payment.routes');
 const {Server}=require('socket.io')
-var server=require('http').createServer(app).listen(3000,()=>{
+var server=require('http').createServer(app).listen(process.env.PORT || 3000,()=>{
     console.log('connected to 3000');
 
 });
