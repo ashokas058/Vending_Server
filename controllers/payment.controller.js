@@ -6,7 +6,8 @@ exports.savePayments=(req,res,next)=>{
 data={
     amount:chk.check(req.body.amount),
     pDate:chk.check(req.body.pDate),
-    fVendId:chk.check(req.body.fVendId)
+    fVendId:chk.check(req.body.fVendId),
+    
 }
 paymentService.savePayment(data,(err,result)=>{
     if(!err)
@@ -21,6 +22,7 @@ exports.getPaymentDetails=(req,res,next)=>{
     data={
         fVendId:chk.check(req.body.fVendId)
     }
+    console.log(req.body.fVendId);
     paymentService.getPayments(data,(err,result)=>{
         if(!err)
         return res.status(200).send({success:1,data:result});
