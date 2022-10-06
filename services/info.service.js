@@ -8,7 +8,7 @@ exports.dbInit = (callback) => {
             db.query('create table if not exists deviceStorage (productName varchar(50),cellNum int,stock int,maxStock int,fVendId int)',
                 [], (err, result, fields) => {
 
-                    db.query('create table if not exists user(id int primary key auto_increment,username varchar(50),password varchar(50))'
+                    db.query('create table if not exists user(id int primary key auto_increment,username varchar(50),password varchar(100))'
                         , [], (err, result, fields) => {
 
                             db.query('create table if not exists userRoles(userId int ,role varchar(50))'
